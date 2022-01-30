@@ -4,7 +4,7 @@ import { Theme, isTheme } from "./theme-provider";
 const themeStorage = createCookieSessionStorage({
   cookie: {
     name: "theme",
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     secrets: ["somesecret"],
     sameSite: "lax",
     path: "/",

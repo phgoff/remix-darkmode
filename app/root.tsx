@@ -11,9 +11,10 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "./styles/app.css";
-import Layout from "./components/Layout";
+import Layout from "./components/layout";
 import { Theme, ThemeProvider, useTheme } from "./utils/theme-provider";
 import { getThemeSession } from "./utils/theme.sever";
+import NavBar from "./components/navbar";
 
 export type LoaderData = {
   theme: Theme | null;
@@ -33,7 +34,7 @@ export const links: LinksFunction = () => {
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Automated Order" };
+  return { title: "Welcome" };
 };
 
 function App() {
@@ -46,7 +47,10 @@ function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="flex flex-col h-screen transition-all duration-300 bg-white dark:bg-gray-900">
+        <header>
+          <NavBar />
+        </header>
         <Layout>
           <Outlet />
         </Layout>
